@@ -27,13 +27,16 @@ This reference architecture shows how to implement a hub-spoke topology in Azure
 3. Select ***CAF Foundation*** as blueprint sample
 ![](./img/foundation.png)
 4. Fill in the information and click ***Next : Artifacts***
+
     |Property  |Description  |
     |---------|---------|
     |**Blueprint name** | The name of your blueprint |
     |**Blueprint description** | Description of your blueprint |
     |**Definition location** | Provide subscription where the blueprint definition is saved |
+    
 5. Delete some artifacts
     ![](./img/delete.png)
+    
     |Artifacts  |
     |---------|
     |**Append CostCenter TAG & its value from the Resource Group** |
@@ -41,14 +44,18 @@ This reference architecture shows how to implement a hub-spoke topology in Azure
     |**Deploy Key Vault** |
     |**Resource Group for Identity Services** |
     |**Resource Group for First Application** |
+    
 6. Under ***Subscription***, click ***Add artifact...***, and create three recource groups
     ![](./img/createRecourceGroups.png)
+    
     |Artifact display name  |Resource Group Name (Uncheck the box) |Location (Uncheck the box)  |
     |---------|---------|---------|
     |**Resource Group for Web App** |**spoke-webapp-rg**  |**East Asia**  |
     |**Resource Group for Core Service** |**[concat(parameters('Organization_Name'),'-Core-rg')]**  |**East Asia**   |
     |**Resource Group for JumpBox** |**[concat(parameters('Organization_Name'),'-JB-rg')]**  |**East Asia**   |
+    
 7. Under ***Resource Group for Networks***, click ***Add artifact...***, and create a Azure Resource Manager template
+
     |Property |Action |
     |---------|---------|
     |**Artifact type** |**Azure Resource Manager template**  |
@@ -56,8 +63,10 @@ This reference architecture shows how to implement a hub-spoke topology in Azure
     |**Description** | |
     |**Template** |**import file: createRecoveryServiceVault.json**  |
     |**Parameters** |**vaultName: recovery-service-vault, changeStorageType: false, valutStorageType: GloballyRedundant, location: [resourceGroup().location]**  |
+    
     ![](./img/vNet.png)
 8. Under ***Resource Group for Shared Services***, click ***Add artifact...***, and create a Azure Resource Manager template
+
     |Property |Action |
     |---------|---------|
     |**Artifact type** |**Azure Resource Manager template**  |
@@ -65,8 +74,10 @@ This reference architecture shows how to implement a hub-spoke topology in Azure
     |**Description** |**landing zone has 4 subnets, Gateway, AzureFirewall, JumpServer, Core for Migrated VMs** |
     |**Template** |**import file: createVNet.json**  |
     |**Parameters** |**Organization_Name: [parameters('Organization_Name')], IPAddress_Space: 192.168**|
+    
     ![](./img/recovery-service-vault.png)
 9. Under ***Resource Group for Web App***, click ***Add artifact...***, and create a Azure Resource Manager template
+
     |Property |Action |
     |---------|---------|
     |**Artifact type** |**Azure Resource Manager template**  |
@@ -74,6 +85,7 @@ This reference architecture shows how to implement a hub-spoke topology in Azure
     |**Description** | |
     |**Template** |**import file: createWebApp.json**  |
     |**Parameters** |**webAppName: webAppName, sku: F1, linuxFxVersion:php|7.0, location: [resourceGroup().location]**|
+    
     ![](./img/spoke-webapp.png)
 10. Click ***Save Draft***
     ![](./img/saveDraft.png)
@@ -83,6 +95,7 @@ This reference architecture shows how to implement a hub-spoke topology in Azure
     ![](./img/publish2.png)
 13. Click ***Assign blueprint***, fill in the following information:
     ![](./img/assign.png)
+    
     |Property |Action |
     |---------|---------|
     |**Assignment name** |**Assignment-CAFBluebrint**  |
@@ -98,6 +111,7 @@ This reference architecture shows how to implement a hub-spoke topology in Azure
     |**Number of days data will be retained in Log Analytics** |**Leave default value**|
     |**Azure Region used when establishing the Log Analytics workspace** |**Southeast Asia**|
     |**vaultName (Deploy Recovery Service Vault)** |**recovery-service-vault**|
+    
     ![](./img/assign1.png)
     ![](./img/assign2.png)
     ![](./img/assign3.png)
