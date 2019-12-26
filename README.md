@@ -11,7 +11,7 @@
 ### Azure subscription ###
 A Azure subscription is required. If your organization already using Azure, please sign up a new Azure account with your personal email and use [Azure Pass](https://www.microsoftazurepass.com/) to redeem Azure Credit.
 
-### Scripts for creating Azure Resources###
+### Scripts for creating Azure Resources ###
 Please down the file ***src*** in this repo to get the scripts for creating Azure Resources later in this tutorial
 
 ## Hub-Spoke Reference Architecture ##
