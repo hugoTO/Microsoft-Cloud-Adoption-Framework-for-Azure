@@ -84,7 +84,7 @@ This reference architecture shows how to implement a hub-spoke topology in Azure
     |**Artifact display name** |**Deploy WebApp**  |
     |**Description** | |
     |**Template** |**import file: createWebApp.json**  |
-    |**Parameters** |**webAppName: webAppName, sku: F1, linuxFxVersion:php|7.0, location: [resourceGroup().location]**|
+    |**Parameters** |**webAppName: webAppName, sku: F1, linuxFxVersion:php 7.0, location: [resourceGroup().location]**|
     
     ![](./img/spoke-webapp.png)
 10. Click ***Save Draft***
